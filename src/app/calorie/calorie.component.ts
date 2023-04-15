@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./calorie.component.scss']
 })
 export class CalorieComponent {
+accMsg: any;
 
 }
