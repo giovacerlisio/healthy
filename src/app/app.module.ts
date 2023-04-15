@@ -21,11 +21,15 @@ import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CoreModule } from './core/core.module';
 import { HomeComponent } from './home/home.component';
+import { BmiComponent } from './bmi/bmi.component';
+import { CalorieComponent } from './calorie/calorie.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    BmiComponent,
+    CalorieComponent
   ],
   imports: [
     BrowserModule,
