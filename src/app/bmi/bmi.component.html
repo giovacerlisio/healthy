@@ -1,1 +1,25 @@
-<p>bmi works!</p>
+<div class="container d-flex justify-content-center" style="text-align:center;">
+<form style="margin-top: 300px; border: 3px solid rgb(179, 179, 179); padding: 10px; border-radius: 10px; ">
+            <div class="form-group">
+              <label for="exampleInputEmail1">Peso in kg</label>
+              <input type="text" class="form-control" id="peso" style="text-align:center" aria-describedby="emailHelp" placeholder="Peso" >
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">Altezza</label>
+              <input type="text" class="form-control" id="altezza" style="text-align:center" placeholder="Altezza in mt (1.70)">
+            </div>
+            <div class="form-group">
+                        <label for="exampleInputPassword1">Eta'</label>
+                        <input type="text" class="form-control" id="eta" style="text-align:center" placeholder="Eta'">
+                      </div>
+                      <br>
+                      <select class="my-select" id="sesso">
+                        <option value="uomo">Uomo</option>
+                        <option value="donna">Donna</option>
+                      </select>
+                      <br>
+                      <br>
+            <button type="submit" class="btn btn-warning">Calcola</button>
+            <p id="risultato" class="risultato">Risultato</p>
+</form>
+</div>
