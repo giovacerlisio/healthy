@@ -19,6 +19,21 @@ export class CalorieComponent {
 
   calcola = (): void => {
 
+    if(this.sesso == "donna"){
+      
+      this.risultato = 655.1 + (9.6 * parseFloat(this.peso)) + (1.9 * parseFloat(this.altezza)) -(4.7 * parseFloat(this.eta));
+      this.accMsg = "Il tuo MET Basale e' : " + Math.round(this.risultato);
+      this.calcolo = true;
+
+    } else if (this.sesso == "uomo"){
+
+      this.risultato = 66.5 + (13.8 * parseFloat(this.peso)) + (5 * parseFloat(this.altezza)) -(6.8 * parseFloat(this.eta));
+      this.accMsg = "Il tuo MET Basale e' : " + Math.round(this.risultato);
+      this.calcolo = true;
+
+    } else {
+      console.log(this.errMsg);
+    }
 
   }
 
