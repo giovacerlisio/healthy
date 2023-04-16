@@ -19,6 +19,10 @@ export class BmiComponent {
 
   calcola = (): void => {
 
+    if(!String(this.altezza).includes(".")){
+      throw new Error("Qualcosa e' andato sbagliato");
+    }
+
     if(this.sesso == "donna"){
       this.risultato = parseFloat(this.peso) / (parseFloat(this.altezza) * parseFloat(this.altezza));
       this.accMsg = "Il tuo BMI e' : " + Math.round(this.risultato);
