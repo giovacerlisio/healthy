@@ -6,6 +6,20 @@ import { Component } from '@angular/core';
   styleUrls: ['./calorie.component.scss']
 })
 export class CalorieComponent {
-accMsg: any;
+
+  peso: string = "";
+  altezza: string = "";
+  eta: string = "" ;
+  sesso: string = "";
+  risultato: number = 0;
+  calcolo: boolean = false;
+
+  accMsg: string = "Il tuo BMI e' : ";
+  errMsg: string = "Errore ";
+
+  calcola = (): void => {
+
+
+  }
 
 }
