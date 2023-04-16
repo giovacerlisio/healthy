@@ -28,19 +28,19 @@ export class BmiComponent {
       this.accMsg = "Il tuo BMI e' : " + Math.round(this.risultato);
       this.calcolo = true;
       
-      console.log(this.peso);
-      console.log(this.altezza);
-      console.log(this.eta);
-      console.log(this.sesso);
+      //console.log(this.peso);
+      //console.log(this.altezza);
+      //console.log(this.eta);
+      //console.log(this.sesso);
     } else if (this.sesso == "uomo"){
       this.risultato = parseFloat(this.peso) / (parseFloat(this.altezza) * parseFloat(this.altezza));
       this.accMsg = "Il tuo BMI e' : " + Math.round(this.risultato);
       this.calcolo = true;
       
-      console.log(this.peso);
-      console.log(this.altezza);
-      console.log(this.eta);
-      console.log(this.sesso);
+      //console.log(this.peso);
+      //console.log(this.altezza);
+      //console.log(this.eta);
+      //console.log(this.sesso);
     } else {
       console.log(this.errMsg);
     }
