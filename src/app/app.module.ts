@@ -23,7 +23,7 @@ import { CoreModule } from './core/core.module';
 import { HomeComponent } from './home/home.component';
 import { BmiComponent } from './bmi/bmi.component';
 import { CalorieComponent } from './calorie/calorie.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -52,7 +52,8 @@ import { FormsModule } from '@angular/forms';
     MdbValidationModule,
     BrowserAnimationsModule,
     CoreModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

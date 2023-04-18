@@ -1,46 +1,74 @@
 import { Component } from '@angular/core';
+import { Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-bmi',
   templateUrl: './bmi.component.html',
   styleUrls: ['./bmi.component.scss']
 })
+
 export class BmiComponent {
 
-  peso: string = "";
-  altezza: string = "";
-  eta: string = "" ;
-  sesso: string = "";
+  form : FormGroup
+
   risultato: number = 0;
   calcolo: boolean = false;
-
   accMsg: string = "Il tuo BMI e' : ";
   errMsg: string = "Errore ";
 
-  calcola = (): void => {
+  constructor (private formBuilder : FormBuilder) {
 
-    if(!String(this.altezza).includes(".")){
+
+    this.form = this.formBuilder.group({
+
+      peso: new FormControl<string>(" ", Validators.required),
+      altezza: new FormControl<string>(" ", Validators.required),
+      eta: new FormControl<string>(" ", Validators.required),
+      sesso: new FormControl<string>("", Validators.required),
+
+    });
+
+  }
+
+  //peso: string = "";
+  // altezza: string = "";
+  // eta: string = "" ;
+  // sesso: string = "";
+  // risultato: number = 0;
+  // calcolo: boolean = false;
+
+
+
+
+  calcola() {
+
+    let {altezza, peso, eta, sesso} = this.form.value
+
+
+    if(!String(altezza).includes(".")){
       throw new Error("Qualcosa e' andato sbagliato");
     }
 
-    if(this.sesso == "donna"){
-      this.risultato = parseFloat(this.peso) / (parseFloat(this.altezza) * parseFloat(this.altezza));
-      this.accMsg = "Il tuo BMI e' : " + Math.round(this.risultato);
+
+    if( sesso == "donna"){
+      this.risultato = parseFloat(peso) / (parseFloat(altezza) * parseFloat(altezza));
+      this.accMsg +=   + Math.round(this.risultato);
       this.calcolo = true;
-      
-      //console.log(this.peso);
-      //console.log(this.altezza);
-      //console.log(this.eta);
-      //console.log(this.sesso);
-    } else if (this.sesso == "uomo"){
-      this.risultato = parseFloat(this.peso) / (parseFloat(this.altezza) * parseFloat(this.altezza));
-      this.accMsg = "Il tuo BMI e' : " + Math.round(this.risultato);
+
+      console.log(peso);
+      console.log(altezza);
+      console.log(eta);
+      console.log(sesso);
+    } else if (sesso == "uomo"){
+      this.risultato = parseFloat(peso) / (parseFloat(altezza) * parseFloat(altezza));
+      this.accMsg +=  + Math.round(this.risultato);
       this.calcolo = true;
-      
-      //console.log(this.peso);
-      //console.log(this.altezza);
-      //console.log(this.eta);
-      //console.log(this.sesso);
+
+      console.log(peso);
+      console.log(altezza);
+      console.log(eta);
+      console.log(sesso);
     } else {
       console.log(this.errMsg);
     }
