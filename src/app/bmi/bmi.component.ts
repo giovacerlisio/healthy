@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { Observable, map, startWith } from 'rxjs';
 
 @Component({
   selector: 'app-bmi',
@@ -8,14 +9,19 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./bmi.component.scss']
 })
 
-export class BmiComponent {
+export class BmiComponent implements OnInit {
 
   form : FormGroup
+ myControl = new FormControl('');
 
   risultato: number = 0;
   calcolo: boolean = false;
   accMsg: string = "Il tuo BMI e' : ";
   errMsg: string = "Errore ";
+  caso = ["uomo", "donna"]
+  //  filteredOptions!: Observable<string[]>;
+      filteredOptions : string[] = []
+
 
   constructor (private formBuilder : FormBuilder) {
 
@@ -31,6 +37,16 @@ export class BmiComponent {
 
   }
 
+   ngOnInit() {
+     this.myControl.valueChanges.pipe(
+      startWith(''),
+      map(value => this._filter(value || '')),
+    ).subscribe((values) => {
+      this.filteredOptions = [...values]
+    });
+
+  }
+
   //peso: string = "";
   // altezza: string = "";
   // eta: string = "" ;
@@ -40,6 +56,11 @@ export class BmiComponent {
 
 
 
+private _filter(value: string): string[] {
+    const filterValue = value.toLowerCase();
+
+    return this.caso.filter(option => option.toLowerCase().includes(filterValue));
+  }
 
   calcola() {
 

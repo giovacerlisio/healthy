@@ -14,13 +14,16 @@ export class CalorieComponent {
   risultato: number = 0;
   calcolo: boolean = false;
 
+
+
+
   accMsg: string = "Il tuo BMI e' : ";
   errMsg: string = "Errore ";
 
   calcola = (): void => {
 
     if(this.sesso == "donna"){
-      
+
       this.risultato = 655.1 + (9.6 * parseFloat(this.peso)) + (1.9 * parseFloat(this.altezza)) -(4.7 * parseFloat(this.eta));
       this.accMsg = "Il tuo MET Basale e' : " + Math.round(this.risultato);
       this.calcolo = true;
