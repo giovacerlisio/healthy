@@ -12,13 +12,12 @@ import { Observable, map, startWith } from 'rxjs';
 export class BmiComponent implements OnInit {
 
   form : FormGroup
- myControl = new FormControl('');
+  myControl = new FormControl('');
 
   risultato: number = 0;
   calcolo: boolean = false;
   accMsg: string = "Il tuo BMI e' : ";
   errMsg: string = "Errore ";
-  //  filteredOptions!: Observable<string[]>;
 
 
   constructor (private formBuilder : FormBuilder) {
@@ -35,16 +34,9 @@ export class BmiComponent implements OnInit {
 
   }
 
-   ngOnInit() {
-
+  ngOnInit(): void {
+    throw new Error('Method not implemented.');
   }
-
-  //peso: string = "";
-  // altezza: string = "";
-  // eta: string = "" ;
-  // sesso: string = "";
-  // risultato: number = 0;
-  // calcolo: boolean = false;
 
 
   calcola() {
