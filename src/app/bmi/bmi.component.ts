@@ -18,9 +18,7 @@ export class BmiComponent implements OnInit {
   calcolo: boolean = false;
   accMsg: string = "Il tuo BMI e' : ";
   errMsg: string = "Errore ";
-  caso = ["uomo", "donna"]
   //  filteredOptions!: Observable<string[]>;
-      filteredOptions : string[] = []
 
 
   constructor (private formBuilder : FormBuilder) {
@@ -31,19 +29,13 @@ export class BmiComponent implements OnInit {
       peso: new FormControl<string>(" ", Validators.required),
       altezza: new FormControl<string>(" ", Validators.required),
       eta: new FormControl<string>(" ", Validators.required),
-      sesso: new FormControl<string>("", Validators.required),
+      sesso: new FormControl<string>(" ", Validators.required),
 
     });
 
   }
 
    ngOnInit() {
-     this.myControl.valueChanges.pipe(
-      startWith(''),
-      map(value => this._filter(value || '')),
-    ).subscribe((values) => {
-      this.filteredOptions = [...values]
-    });
 
   }
 
@@ -54,13 +46,6 @@ export class BmiComponent implements OnInit {
   // risultato: number = 0;
   // calcolo: boolean = false;
 
-
-
-private _filter(value: string): string[] {
-    const filterValue = value.toLowerCase();
-
-    return this.caso.filter(option => option.toLowerCase().includes(filterValue));
-  }
 
   calcola() {
 
@@ -92,6 +77,11 @@ private _filter(value: string): string[] {
       console.log(sesso);
     } else {
       console.log(this.errMsg);
+      console.log(peso);
+      console.log(altezza);
+      console.log(eta);
+      console.log(sesso);
+      console.log(this.form.value)
     }
 
   }
