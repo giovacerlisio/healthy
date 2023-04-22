@@ -1,7 +1,9 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Observable, map, startWith } from 'rxjs';
+import { BmiService } from '../bmi.service';
 
 @Component({
   selector: 'app-bmi',
@@ -18,9 +20,10 @@ export class BmiComponent implements OnInit {
   calcolo: boolean = false;
   accMsg: string = "Il tuo BMI e' : ";
   errMsg: string = "Errore ";
+  private serverUrl = 'http://localhost:8090/api/bmi';
 
 
-  constructor (private formBuilder : FormBuilder) {
+  constructor (private formBuilder : FormBuilder, private http: HttpClient) {
 
 
     this.form = this.formBuilder.group({
@@ -41,7 +44,18 @@ export class BmiComponent implements OnInit {
 
   calcola() {
 
+
+    
+
     let {altezza, peso, eta, sesso} = this.form.value
+
+    this.http.post(this.serverUrl,
+      { peso: peso, altezza: altezza, eta: eta, sesso: sesso },
+      { headers: { "Access-Control-Allow-Origin": "*" } }
+    ).subscribe(response => {
+      console.log(response);
+    });
+    
 
 
     if(!String(altezza).includes(".")){
