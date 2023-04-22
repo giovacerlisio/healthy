@@ -50,8 +50,7 @@ export class BmiComponent implements OnInit {
     let {altezza, peso, eta, sesso} = this.form.value
 
     this.http.post(this.serverUrl,
-      { peso: peso, altezza: altezza, eta: eta, sesso: sesso },
-      { headers: { "Access-Control-Allow-Origin": "*" } }
+      { peso: peso, altezza: altezza, eta: eta, sesso: sesso }
     ).subscribe(response => {
       console.log(response);
     });
