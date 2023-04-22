@@ -7,6 +7,7 @@ This project was generated and created with [Angular CLI](https://github.com/ang
 <a href="https://www.typescriptlang.org/" target="_blank" rel="noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/4/4c/Typescript_logo_2020.svg" width="36" height="36" alt="Typescript" /></a>
 <a><img src="https://upload.wikimedia.org/wikipedia/commons/6/61/HTML5_logo_and_wordmark.svg" width="36" height="36" alt="Html" /></a>
 <a><img src="https://logos-download.com/wp-content/uploads/2016/09/Sass_logo.png" width="36" height="36" alt="Scss" /></a>
+<a><img src="https://cdn.freebiesupply.com/logos/large/2x/spring-3-logo-png-transparent.png" width="36" height="36" alt="Spring" /></a>
 
 ## Development server
 
@@ -21,4 +22,6 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 ## Description 
 
 This website permit to calculate BMI and basal metabolic rate.
+
+Interaction with an API created in spring (java)
 
