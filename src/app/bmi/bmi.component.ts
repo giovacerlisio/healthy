@@ -20,6 +20,7 @@ export class BmiComponent implements OnInit {
   calcolo: boolean = false;
   accMsg: string = "Il tuo BMI e' : ";
   errMsg: string = "Errore ";
+  Msg : string = " ";
   private serverUrl = 'http://localhost:8090/api/bmi';
 
 
@@ -53,40 +54,14 @@ export class BmiComponent implements OnInit {
       { peso: peso, altezza: altezza, eta: eta, sesso: sesso }
     ).subscribe(response => {
       console.log(response);
+      this.Msg = String(response);
     });
     
 
 
+
     if(!String(altezza).includes(".")){
       throw new Error("Qualcosa e' andato sbagliato");
-    }
-
-
-    if( sesso == "donna"){
-      this.risultato = parseFloat(peso) / (parseFloat(altezza) * parseFloat(altezza));
-      this.accMsg +=   + Math.round(this.risultato);
-      this.calcolo = true;
-
-      console.log(peso);
-      console.log(altezza);
-      console.log(eta);
-      console.log(sesso);
-    } else if (sesso == "uomo"){
-      this.risultato = parseFloat(peso) / (parseFloat(altezza) * parseFloat(altezza));
-      this.accMsg +=  + Math.round(this.risultato);
-      this.calcolo = true;
-
-      console.log(peso);
-      console.log(altezza);
-      console.log(eta);
-      console.log(sesso);
-    } else {
-      console.log(this.errMsg);
-      console.log(peso);
-      console.log(altezza);
-      console.log(eta);
-      console.log(sesso);
-      console.log(this.form.value)
     }
 
   }
