@@ -1,16 +1,17 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { map } from 'rxjs';
 
-export interface PeriodicElement {
+
+
+export interface Alimenti {
+
+  id: number
+  nome: string
+  calorie: string
+  peso: string
 
 }
-
-
-
-
-//const ELEMENT_DATA: Alimenti[] = [
-
-//];
 
 
 @Component({
@@ -18,25 +19,34 @@ export interface PeriodicElement {
   templateUrl: './alimenti.component.html',
   styleUrls: ['./alimenti.component.scss']
 })
+
 export class AlimentiComponent {
   private serverUrl = 'http://localhost:8081/api/listalimenti';
+  ELEMENT_DATA: Alimenti[] = [];
+  Variabile: Alimenti[] = [];
 
-  constructor (private http: HttpClient) {
-
-    
-
-  }
 
   ngOnInit() {          
-    this.http.get<any>(this.serverUrl)
-    .subscribe(data => {
+    this.http.get<Alimenti[]>(this.serverUrl)
+    .pipe(map((data) => {
         console.log(data)
-    })
+        console.log(this.ELEMENT_DATA)
+
+        this.ELEMENT_DATA = data;
+    }))
+
+    console.log(this.ELEMENT_DATA)
+
 }
 
+constructor (private http: HttpClient) {
 
+  console.log(this.ELEMENT_DATA)
 
-  //displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  //dataSource = ELEMENT_DATA;
+}
+
+displayedColumns: string[] = ['nome', 'calorie', 'peso'];
+dataSource = this.ELEMENT_DATA;
+
 
 }

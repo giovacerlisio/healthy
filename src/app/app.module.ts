@@ -26,6 +26,7 @@ import { CalorieComponent } from './calorie/calorie.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AlimentiComponent } from './alimenti/alimenti.component';
+import { MatTableModule } from '@angular/material/table';
 
 
 @NgModule({
@@ -58,7 +59,8 @@ import { AlimentiComponent } from './alimenti/alimenti.component';
     CoreModule,
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]
