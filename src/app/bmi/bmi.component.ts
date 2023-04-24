@@ -21,7 +21,7 @@ export class BmiComponent implements OnInit {
   accMsg: string = "Il tuo BMI e' : ";
   errMsg: string = "Errore ";
   Msg : string = " ";
-  private serverUrl = 'http://localhost:8090/api/bmi';
+  private serverUrl = 'http://localhost:8081/api/bmi';
 
 
   constructor (private formBuilder : FormBuilder, private http: HttpClient) {

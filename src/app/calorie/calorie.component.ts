@@ -20,7 +20,7 @@ export class CalorieComponent implements OnInit {
   accMsg: string = "Il tuo BMI e' : ";
   errMsg: string = "Errore ";
   Msg : string = " ";
-  private serverUrl = 'http://localhost:8090/api/calorie';
+  private serverUrl = 'http://localhost:8081/api/calorie';
 
 
   constructor (private formBuilder : FormBuilder, private http: HttpClient) {
