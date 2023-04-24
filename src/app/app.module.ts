@@ -25,6 +25,7 @@ import { BmiComponent } from './bmi/bmi.component';
 import { CalorieComponent } from './calorie/calorie.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { AlimentiComponent } from './alimenti/alimenti.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { HttpClientModule } from '@angular/common/http';
     AppComponent,
     HomeComponent,
     BmiComponent,
-    CalorieComponent
+    CalorieComponent,
+    AlimentiComponent
   ],
   imports: [
     BrowserModule,
