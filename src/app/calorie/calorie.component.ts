@@ -1,43 +1,69 @@
-import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
+import { Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { Observable, map, startWith } from 'rxjs';
 
 @Component({
   selector: 'app-calorie',
   templateUrl: './calorie.component.html',
   styleUrls: ['./calorie.component.scss']
 })
-export class CalorieComponent {
 
-  peso: string = "";
-  altezza: string = "";
-  eta: string = "" ;
-  sesso: string = "";
+export class CalorieComponent implements OnInit {
+
+  formcalorie : FormGroup
+  myControl = new FormControl('');
+
   risultato: number = 0;
   calcolo: boolean = false;
-
-
-
-
   accMsg: string = "Il tuo BMI e' : ";
   errMsg: string = "Errore ";
+  Msg : string = " ";
+  private serverUrl = 'http://localhost:8090/api/calorie';
 
-  calcola = (): void => {
 
-    if(this.sesso == "donna"){
+  constructor (private formBuilder : FormBuilder, private http: HttpClient) {
 
-      this.risultato = 655.1 + (9.6 * parseFloat(this.peso)) + (1.9 * parseFloat(this.altezza)) -(4.7 * parseFloat(this.eta));
-      this.accMsg = "Il tuo MET Basale e' : " + Math.round(this.risultato);
-      this.calcolo = true;
 
-    } else if (this.sesso == "uomo"){
+    this.formcalorie = this.formBuilder.group({
 
-      this.risultato = 66.5 + (13.8 * parseFloat(this.peso)) + (5 * parseFloat(this.altezza)) -(6.8 * parseFloat(this.eta));
-      this.accMsg = "Il tuo MET Basale e' : " + Math.round(this.risultato);
-      this.calcolo = true;
+      peso: new FormControl<string>(" ", Validators.required),
+      altezza: new FormControl<string>(" ", Validators.required),
+      eta: new FormControl<string>(" ", Validators.required),
+      sesso: new FormControl<string>(" ", Validators.required),
 
-    } else {
-      console.log(this.errMsg);
+    });
+
+  }
+
+  ngOnInit(): void {
+    throw new Error('Method not implemented.');
+  }
+
+
+  calcola() {
+
+
+    
+
+    let {altezza, peso, eta, sesso} = this.formcalorie.value
+
+    this.http.post(this.serverUrl,
+      { peso: peso, altezza: altezza, eta: eta, sesso: sesso }
+    ).subscribe(response => {
+      console.log(response);
+      this.Msg = String(response);
+    });
+    
+
+
+
+    if(!String(altezza).includes(".")){
+      throw new Error("Qualcosa e' andato sbagliato");
     }
 
   }
 
 }
+

@@ -1,27 +1,70 @@
-<div class="container d-flex justify-content-center" style="text-align:center;">
-  <form style="margin-top: 300px; border: 3px solid rgb(179, 179, 179); padding: 10px; border-radius: 10px; ">
-              <div class="form-group">
-                <label for="exampleInputEmail1">Peso in kg</label>
-                <input type="number" class="form-control" id="peso" style="text-align:center" placeholder="Peso" [(ngModel)] = "peso" [ngModelOptions]="{standalone: true}">
-              </div>
-              <div class="form-group">
-                <label for="exampleInputPassword1">Altezza</label>
-                <input type="number" class="form-control" id="altezza" style="text-align:center" placeholder="Altezza in cm (170)" [(ngModel)] = "altezza" [ngModelOptions]="{standalone: true}">
-              </div>
-              <div class="form-group">
-                          <label for="exampleInputPassword1">Eta'</label>
-                          <input type="number" class="form-control" id="eta" style="text-align:center" placeholder="Eta'" [(ngModel)] = "eta" [ngModelOptions]="{standalone: true}">
-                        </div>
-                        <br>
-                        <select class="my-select" id="sesso" [(ngModel)] = "sesso" [ngModelOptions]="{standalone: true}">
-                          <option value="uomo">Uomo</option>
-                          <option value="donna">Donna</option>
-                        </select>
-                        <br>
-                        <br>
-              <button (click) = calcola() type="submit" class="btn btn-warning">Calcola</button>
-              <br>
-              <p id="risultato" class="risultato-warning" *ngIf='calcolo'>{{accMsg}}</p>
-              <p id="risultato" class="risultato-warning" *ngIf='!calcolo'>{{errMsg}}</p>
-  </form>
+<div class="container d-flex justify-content-center" style="text-align: center">
+  <form
+    style="
+      margin-top: 300px;
+      border: 3px solid rgb(179, 179, 179);
+      padding: 10px;
+      border-radius: 10px;
+    "
+    [formGroup]="formcalorie"
+  >
+    <div class="form-group">
+      <label for="exampleInputEmail1">Peso in kg</label>
+      <input
+        type="number"
+        class="form-control"
+        id="peso"
+        style="text-align: center"
+        placeholder="Peso"
+        formControlName="peso"
+      />
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Altezza</label>
+      <input
+        type="number"
+        class="form-control"
+        id="altezza"
+        style="text-align: center"
+        placeholder="Altezza in mt (170)"
+        formControlName="altezza"
+      />
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Eta'</label>
+      <input
+        type="number"
+        class="form-control"
+        id="eta"
+        style="text-align: center"
+        placeholder="Eta'"
+        formControlName="eta"
+      />
+    </div>
+    <br />
+    <!-- <select class="my-select" id="sesso" formControlName = "sesso">
+                        <option value="uomo">Uomo</option>
+                        <option value="donna">Donna</option>
+                      </select> -->
+                      
+    <div class="form-group">
+      <label for="exampleInputPassword1">Sesso</label>
+      <select class="my-select" id="sesso" class="form-control" formControlName="sesso">
+        <option value="uomo">Uomo</option>
+        <option value="donna">Donna</option>
+      </select>
   </div>
+    <br />
+    <br />
+    <button (click)="calcola()" type="submit" class="btn btn-warning">
+      Calcola
+    </button>
+    <br />
+    <p id="risultato" class="risultato-warning">{{ Msg }}</p>
+    <p id="risultato" class="risultato-warning" *ngIf="!calcolo">
+      {{ errMsg }}
+    </p>
+
+  </form>
+  
+</div>
