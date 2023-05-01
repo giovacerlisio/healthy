@@ -40,14 +40,13 @@ export class AlimentiComponent {
   ngOnInit() {
     this.http.get<Alimenti[]>(this.serverUrl)
     .subscribe((data) => {
-        console.log(data)
-        console.log(this.ELEMENT_DATA)
+        //console.log(data)
+        //console.log(this.ELEMENT_DATA)
 
         this.ELEMENT_DATA = data;
     })
 
     console.log(this.ELEMENT_DATA)
-    console.log("ciao")
 
 }
 
