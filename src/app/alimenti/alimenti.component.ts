@@ -22,11 +22,12 @@ export interface Alimenti {
 
 export class AlimentiComponent {
   private serverUrl = 'http://localhost:8081/api/listalimenti';
+  private serverUrlDelete = 'http://localhost:8081/api/deletealimento/';
   ELEMENT_DATA: Alimenti[] = [
   ];
   Variabile: Alimenti[] = [];
 
-  displayedColumns: string[] = ['nome', 'calorie', 'peso'];
+  displayedColumns: string[] = ['nome', 'calorie', 'peso', 'modifica', 'elimina'];
 
 
 
@@ -50,6 +51,14 @@ export class AlimentiComponent {
 
 }
 
+
+  elimina(id: string) {
+
+    this.http.delete(this.serverUrlDelete + id)
+    .subscribe(() => console.log("eliminato"))
+
+    window.location.reload()
+}
 
 
 
