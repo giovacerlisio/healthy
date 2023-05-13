@@ -1,3 +1,6 @@
+
+
+
 <table
   mat-table
   [dataSource]="ELEMENT_DATA"
@@ -43,7 +46,12 @@
   </td>
   </ng-container>
 
+
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
 </table>
+<br>
+<br>
+
+<button mat-raised-button color="warn" style="display: block; margin: 0 auto; width: 200px;"  onclick="window.location.href='/postalimenti';">Inserisci Alimento</button>
 

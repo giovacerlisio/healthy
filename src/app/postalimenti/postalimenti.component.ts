@@ -55,6 +55,8 @@ export class PostalimentiComponent {
     });
 
   this.calcolo = true;
+
+  window.location.href='/alimenti';
     
 
   }
