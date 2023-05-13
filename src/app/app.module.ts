@@ -29,6 +29,7 @@ import { AlimentiComponent } from './alimenti/alimenti.component';
 import { MatTableModule } from '@angular/material/table';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
+import { PostalimentiComponent } from './postalimenti/postalimenti.component';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import {MatIconModule} from '@angular/material/icon';
     HomeComponent,
     BmiComponent,
     CalorieComponent,
-    AlimentiComponent
+    AlimentiComponent,
+    PostalimentiComponent
   ],
   imports: [
     BrowserModule,
