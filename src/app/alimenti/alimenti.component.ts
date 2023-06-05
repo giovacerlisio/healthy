@@ -23,6 +23,7 @@ export interface Alimenti {
 export class AlimentiComponent {
   private serverUrl = 'http://localhost:8081/api/listalimenti';
   private serverUrlDelete = 'http://localhost:8081/api/deletealimento/';
+  private serverUrlModify = 'http://localhost:8081/api/getalimentoby/';
   ELEMENT_DATA: Alimenti[] = [
   ];
   Variabile: Alimenti[] = [];
@@ -40,8 +41,6 @@ export class AlimentiComponent {
   ngOnInit() {
     this.http.get<Alimenti[]>(this.serverUrl)
     .subscribe((data) => {
-        //console.log(data)
-        //console.log(this.ELEMENT_DATA)
 
         this.ELEMENT_DATA = data;
     })
@@ -58,6 +57,13 @@ export class AlimentiComponent {
 
     window.location.reload()
 }
+
+  modifica(id: string) {
+
+    this.http.get(this.serverUrlModify + id)
+    .subscribe((data) => console.log(data))
+
+  }
 
 
 
